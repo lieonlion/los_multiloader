@@ -3,6 +3,15 @@ plugins {
     id 'net.neoforged.moddev'
 }
 
+repositories {
+    maven { url = "https://api.modrinth.com/maven" } // Quad, Sodium
+}
+
+dependencies {
+    implementation "maven.modrinth:quad:${quad_version}+${minecraft_version}-Neo"
+    implementation "maven.modrinth:sodium:mc${minecraft_version}-${sodium_version}-neoforge"
+}
+
 neoForge {
     version = neoforge_version
     // Automatically enable neoforge AccessTransformers if the file exists
@@ -24,9 +33,6 @@ neoForge {
         }
         data {
             data()
-        }
-        server {
-            server()
         }
     }
     mods {
