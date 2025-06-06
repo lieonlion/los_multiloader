@@ -3,15 +3,15 @@ plugins {
     id 'fabric-loom'
 }
 
-repositories {
-    maven { url = "https://api.modrinth.com/maven" } // Quad, Sodium
-    maven { url = "https://maven.terraformersmc.com/" } // ModMenu
-}
-
 fabricApi {
     configureDataGeneration {
         client = true
     }
+}
+
+repositories {
+    maven { url = "https://api.modrinth.com/maven" } // Quad, Sodium
+    maven { url = "https://maven.terraformersmc.com/" } // ModMenu
 }
 
 dependencies {
