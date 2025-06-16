@@ -4,7 +4,11 @@ plugins {
 }
 
 base {
-    archivesName = "${mod_id}-${project.name}-${minecraft_version}"
+    archivesName = "${getModName(mod_name)}-${mod_version}+${minecraft_version}-${project.name}"
+}
+
+static def getModName(name) {
+    return name.toLowerCase().replaceAll(/[^a-z]+/, "-")
 }
 
 java {
@@ -84,23 +88,26 @@ jar {
 
 processResources {
     var expandProps = [
-            'version'                      : version,
-            'group'                        : project.group, //Else we target the task's group.
-            'minecraft_version'            : minecraft_version,
-            'minecraft_version_range'      : minecraft_version_range,
-            'fabric_version'               : fabric_version,
-            'fabric_loader_version'        : fabric_loader_version,
-            'mod_name'                     : mod_name,
-            'mod_author'                   : mod_author,
-            'mod_id'                       : mod_id,
-            'license'                      : license,
-            'description'                  : project.description,
-            'neoforge_version'             : neoforge_version,
-            'neoforge_loader_version_range': neoforge_loader_version_range,
-            "forge_version": forge_version,
-            "forge_loader_version_range": forge_loader_version_range,
-            'credits'                      : credits,
-            'java_version'                 : java_version
+            'mod_id'                         : mod_id,
+            'mod_name'                       : mod_name,
+            'mod_version'                    : mod_version,
+            'mod_license'                    : mod_license,
+            'mod_group'                      : mod_group,
+            'mod_author'                     : mod_author,
+            'mod_description'                : mod_description,
+            'mod_link_homepage'              : mod_link_homepage,
+            'mod_link_sources'               : mod_link_sources,
+            'mod_link_issues'                : mod_link_issues,
+            'minecraft_version'              : minecraft_version,
+            'minecraft_fabric_version_range' : minecraft_fabric_version_range,
+            'minecraft_neo_version_range'    : minecraft_neo_version_range,
+            'fabric_version'                 : fabric_version,
+            'fabric_loader_version'          : fabric_loader_version,
+            'neoforge_version'               : neoforge_version,
+            'neoforge_loader_version_range'  : neoforge_loader_version_range,
+            'java_version'                   : java_version,
+            'quad_version'                   : quad_version,
+            'quad_version_range'             : quad_version_range
     ]
 
     var jsonExpandProps = expandProps.collectEntries {
