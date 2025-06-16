@@ -10,6 +10,20 @@ mixin {
     config("${mod_id}.forge.mixins.json")
 }
 
+repositories {
+    maven { url = "https://api.modrinth.com/maven" } // Quad
+}
+
+dependencies {
+    compileOnly project(":common")
+    annotationProcessor("org.spongepowered:mixin:0.8.5:processor")
+
+//    compileOnly(annotationProcessor("io.github.llamalad7:mixinextras-common:0.4.1"))
+//    implementation("io.github.llamalad7:mixinextras-forge:0.4.1")
+
+//    implementation "maven.modrinth:quad:${quad_version}+1.20.4-Forge"
+}
+
 legacyForge {
     version = "${minecraft_version}-${forge_version}"
 
@@ -29,10 +43,7 @@ legacyForge {
         }
         data {
             data()
-            programArguments.addAll '--mod', project.mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
-        }
-        server {
-            server()
+            programArguments.addAll '--mod', mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
         }
     }
 
@@ -44,11 +55,6 @@ legacyForge {
 }
 
 sourceSets.main.resources.srcDir 'src/generated/resources'
-
-dependencies {
-    compileOnly project(":common")
-    annotationProcessor("org.spongepowered:mixin:0.8.5-SNAPSHOT:processor")
-}
 
 jar {
     finalizedBy('reobfJar')
