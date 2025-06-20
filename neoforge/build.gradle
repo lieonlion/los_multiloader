@@ -8,7 +8,7 @@ repositories {
 }
 
 dependencies {
-    implementation "maven.modrinth:quad:${quad_version}+${minecraft_version}-Neo"
+    // implementation "maven.modrinth:quad:${quad_version}+${minecraft_version}-Neo"
     implementation "maven.modrinth:sodium:mc${minecraft_version}-${sodium_version}-neoforge"
 }
 
