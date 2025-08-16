@@ -4,7 +4,7 @@
 
 This is the MultiLoader Template for LieOn Studios' modding projects.
 
-## Minecraft Version 1.21.6
+## Minecraft Version 1.21.8
 
 - Fabric
 - NeoForge
